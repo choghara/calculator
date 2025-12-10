@@ -82,12 +82,13 @@
       <button type="button" class="btn equals" onclick="calculate()">=</button>
     </div>
   </div>
+<script src="script.js"></script>
 <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js")
       .then(() => console.log("Service Worker registered"));
   }
 </script>
-  <script src="script.js"></script>
+  
 </body>
 </html>
