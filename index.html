@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <!-- Display Section -->
+    <div class="display-container">
+      <div class="memory-indicator" id="memoryIndicator">M</div>
+      <div class="angle-mode" id="angleMode">DEG</div>
+      <input type="text" id="display" readonly aria-label="Calculator display">
+      <div class="history" id="history"></div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+      <!-- Memory and Mode Functions -->
+      <button type="button" class="btn memory" onclick="memoryClear()">MC</button>
+      <button type="button" class="btn memory" onclick="memoryRecall()">MR</button>
+      <button type="button" class="btn memory" onclick="memoryAdd()">M+</button>
+      <button type="button" class="btn memory" onclick="memorySubtract()">M-</button>
+      <button type="button" class="btn mode" onclick="toggleAngleMode()">DEG</button>
+
+      <!-- Scientific Functions -->
+      <button type="button" class="btn scientific" onclick="appendFunction('sin(')">sin</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('cos(')">cos</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('tan(')">tan</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('log(')">log</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('ln(')">ln</button>
+
+      <!-- More Scientific Functions -->
+      <button type="button" class="btn scientific" onclick="appendFunction('asin(')">asin</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('acos(')">acos</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('atan(')">atan</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('π')">π</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('e')">e</button>
+
+      <!-- Power and Root Functions -->
+      <button type="button" class="btn scientific" onclick="appendToDisplay('^')">xʸ</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('sqrt(')">√</button>
+      <button type="button" class="btn scientific" onclick="appendFunction('cbrt(')">∛</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('^2')">x²</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('^3')">x³</button>
+
+      <!-- Basic Operations -->
+      <button type="button" class="btn clear" onclick="clearDisplay()">C</button>
+      <button type="button" class="btn clear" onclick="clearEntry()">CE</button>
+      <button type="button" class="btn clear" onclick="deleteLast()">⌫</button>
+      <button type="button" class="btn operator" onclick="appendToDisplay('/')">÷</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('!')" title="Factorial">n!</button>
+
+      <!-- Numbers and Operations -->
+      <button type="button" class="btn number" onclick="appendToDisplay('7')">7</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('8')">8</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('9')">9</button>
+      <button type="button" class="btn operator" onclick="appendToDisplay('*')">×</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('(')">(</button>
+
+      <button type="button" class="btn number" onclick="appendToDisplay('4')">4</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('5')">5</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('6')">6</button>
+      <button type="button" class="btn operator" onclick="appendToDisplay('-')">−</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay(')')">)</button>
+
+      <button type="button" class="btn number" onclick="appendToDisplay('1')">1</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('2')">2</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('3')">3</button>
+      <button type="button" class="btn operator" onclick="appendToDisplay('+')">+</button>
+      <button type="button" class="btn scientific" onclick="appendToDisplay('%')">%</button>
+
+      <button type="button" class="btn number zero" onclick="appendToDisplay('0')">0</button>
+      <button type="button" class="btn number" onclick="appendToDisplay('.')">.</button>
+      <button type="button" class="btn scientific" onclick="changeSign()">±</button>
+      <button type="button" class="btn equals" onclick="calculate()">=</button>
+    </div>
+  </div>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js")
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
+  <script src="script.js"></script>
+</body>
+</html>

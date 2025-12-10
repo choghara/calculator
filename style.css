@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.calculator {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+}
+
+.display-container {
+    position: relative;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.memory-indicator {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.memory-indicator.active {
+    opacity: 1;
+}
+
+.angle-mode {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    color: #4ecdc4;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+#display {
+    width: 100%;
+    height: 80px;
+    background: #2c2c2c;
+    border: 2px solid #444;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    text-align: right;
+    padding: 10px 20px 30px 20px;
+    outline: none;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+.history {
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    color: #888;
+    font-size: 0.8rem;
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    flex: 1;
+    align-content: start;
+}
+
+.btn {
+    height: calc((100vh - 200px) / 9);
+    min-height: 45px;
+    max-height: 60px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    outline: none;
+    border: 1px solid #555;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.number {
+    background: #404040;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.number:active {
+    background: #505050;
+}
+
+.operator {
+    background: #ff9500;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.operator:active {
+    background: #ffad33;
+}
+
+.scientific {
+    background: #2d3748;
+    color: #4ecdc4;
+    font-size: 0.85rem;
+}
+
+.scientific:active {
+    background: #3d4758;
+    color: #5eddd4;
+}
+
+.memory {
+    background: #553c9a;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.memory:active {
+    background: #654caa;
+}
+
+.mode {
+    background: #2b6cb0;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.mode:active {
+    background: #3b7cc0;
+}
+
+.equals {
+    background: #48bb78;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.equals:active {
+    background: #58cb88;
+}
+
+.clear {
+    background: #e53e3e;
+    color: white;
+}
+
+.clear:active {
+    background: #f54e4e;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Landscape orientation adjustments */
+@media screen and (orientation: landscape) {
+    .calculator {
+        padding: 10px;
+    }
+    
+    #display {
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        height: calc((100vh - 150px) / 9);
+        min-height: 35px;
+        max-height: 45px;
+        font-size: 0.9rem;
+    }
+    
+    .scientific {
+        font-size: 0.75rem;
+    }
+}
+
+/* Small screen adjustments */
+@media screen and (max-height: 600px) {
+    .btn {
+        min-height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .scientific {
+        font-size: 0.7rem;
+    }
+    
+    #display {
+        height: 60px;
+        font-size: 1.4rem;
+    }
+}
